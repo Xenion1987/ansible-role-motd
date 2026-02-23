@@ -2,9 +2,92 @@
 # https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#role-argument-validation
 argument_specs:
   main:
-    author:
-      - Xenion1987
-    short_description: Create your 'message of the day'
+    short_description: Manage a systemd-based MOTD generator
     description:
-      - This role creates a personalized message of the day.
-    options: {}
+      - Installs a script and systemd unit/timer to generate a dynamic message of the day.
+    options:
+
+      motd_command:
+        type: str
+        required: false
+        default: hostnamectl
+        description:
+          - Command whose output will be written to the MOTD file.
+          - Can also be an absolute path to a custom executable.
+
+      motd_file_dir:
+        type: str
+        required: false
+        default: /etc
+        description:
+          - Target directory where the MOTD file will be stored.
+
+      motd_file_name:
+        type: str
+        required: false
+        default: motd
+        description:
+          - Name of the MOTD file.
+
+      motd_file_path:
+        type: str
+        required: false
+        default: "{{ motd_file_dir }}/{{ motd_file_name }}"
+        description:
+          - Absolute path of the generated MOTD file.
+
+      motd_script_dir:
+        type: str
+        required: false
+        default: /usr/local/bin
+        description:
+          - Directory where the generator script will be installed.
+
+      motd_script_name:
+        type: str
+        required: false
+        default: motd
+        description:
+          - Name of the installed generator script.
+
+      motd_script_path:
+        type: str
+        required: false
+        default: "{{ motd_script_dir }}/{{ motd_script_name }}"
+        description:
+          - Absolute path of the generator script.
+
+      motd_service_description:
+        type: str
+        required: false
+        default: Generate message of the day
+        description:
+          - Description field of the systemd service unit.
+
+      motd_service_dir:
+        type: str
+        required: false
+        default: /etc/systemd/system
+        description:
+          - Directory where the systemd unit files will be stored.
+
+      motd_service_name:
+        type: str
+        required: false
+        default: motd
+        description:
+          - Base name of the systemd service and timer units (without suffix).
+
+      motd_timer_delay_after_boot:
+        type: str
+        required: false
+        default: 2m
+        description:
+          - Delay before first execution after boot (systemd time span syntax).
+
+      motd_timer_repeat_intervall:
+        type: str
+        required: false
+        default: 5m
+        description:
+          - Interval for repeated execution (systemd time span syntax).

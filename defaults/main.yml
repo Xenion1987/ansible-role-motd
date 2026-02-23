@@ -1,17 +1,60 @@
 ---
+# @var motd_command:type: string
+# @var motd_command:description: >
+# Command's output will be forwarded into `motd_file_dir`.
+# May also be an absolute path to an executable script.
+# @end
+# @var motd_command:example: >
+# - hostnamectl
+# - /path/to/custom/script
+# @end
 motd_command: hostnamectl
 
+# @var motd_file_dir:type: string
+# @var motd_file_dir:description: Target dir to store the MOTD file
+# @var motd_file_dir:example: >
+# - /etc
+# - /etc/motd.d
+# @end
 motd_file_dir: /etc
+# @var motd_file_name:type: string
+# @var motd_file_name:description: Target MOTD file name
 motd_file_name: motd
+# @var motd_file_path:type: string
+# @var motd_file_path:description: MOTD target absolute path
 motd_file_path: "{{ motd_file_dir }}/{{ motd_file_name }}"
 
+# @var motd_script_dir:type: string
+# @var motd_script_dir:description: Target dir to store the script file
+# @var motd_file_dir:example: >
+# - /usr/local/bin
+# - /home/user/.local/bin
+# @end
 motd_script_dir: /usr/local/bin
+# @var motd_script_dir:type: string
+# @var motd_script_dir:description: Target script file name
 motd_script_name: motd
+# @var motd_script_dir:type: string
+# @var motd_script_dir:description: Script's target absolute path
 motd_script_path: "{{ motd_script_dir }}/{{ motd_script_name }}"
 
+# @var motd_service_description:type: string
+# @var motd_service_description:description: Unit file description
 motd_service_description: Generate message of the day
+# @var motd_service_dir:type: string
+# @var motd_service_dir:description: Target dir to store the unit file
+# @var motd_service_dir:example: >
+# - /etc/systemd/system
+# - /home/user/.config/systemd/user
+# @end
 motd_service_dir: /etc/systemd/system
+# @var motd_service_name:type: string
+# @var motd_service_name:description: Target unit file name
 motd_service_name: motd
 
+# @var motd_timer_delay_after_boot:type: string
+# @var motd_timer_delay_after_boot:description: How long to delay service start after boot
 motd_timer_delay_after_boot: 2m
+# @var motd_timer_repeat_intervall:type: string
+# @var motd_timer_repeat_intervall:description: Intervall to update the MOTD file
 motd_timer_repeat_intervall: 5m
