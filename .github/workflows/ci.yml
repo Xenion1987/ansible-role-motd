@@ -9,7 +9,7 @@ on:
 
 defaults:
   run:
-    working-directory: "motd"
+    working-directory: "ansible-role-motd"
 
 jobs:
   lint:
@@ -18,7 +18,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
         with:
-          path: "motd"
+          path: "ansible-role-motd"
 
       - name: Set up Python 3.
         uses: actions/setup-python@v5
@@ -43,7 +43,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
         with:
-          path: "motd"
+          path: "ansible-role-motd"
 
       - name: Set up Python 3.
         uses: actions/setup-python@v5
