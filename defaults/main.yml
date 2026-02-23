@@ -1,0 +1,17 @@
+---
+motd_command: hostnamectl
+
+motd_file_dir: /etc
+motd_file_name: motd
+motd_file_path: "{{ motd_file_dir }}/{{ motd_file_name }}"
+
+motd_script_dir: /usr/local/bin
+motd_script_name: motd
+motd_script_path: "{{ motd_script_dir }}/{{ motd_script_name }}"
+
+motd_service_description: Generate message of the day
+motd_service_dir: /etc/systemd/system
+motd_service_name: motd
+
+motd_timer_delay_after_boot: 2m
+motd_timer_repeat_intervall: 5m

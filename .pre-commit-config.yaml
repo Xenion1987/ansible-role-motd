@@ -1,0 +1,15 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        name: Cleanup trailing whitespaces
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+  - repo: local
+    hooks:
+      - id: ansible-lint
+        name: ansible-lint
+        entry: ansible-lint
+        language: unsupported

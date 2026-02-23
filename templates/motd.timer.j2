@@ -1,0 +1,10 @@
+[Unit]
+Description={{ motd_service_description }}
+
+[Timer]
+Persistent=true
+OnBootSec={{ motd_timer_delay_after_boot }}
+OnUnitActiveSec={{ motd_timer_repeat_intervall }}
+
+[Install]
+WantedBy=timers.target

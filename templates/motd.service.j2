@@ -1,0 +1,11 @@
+[Unit]
+Description={{ motd_service_description }}
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart={{ motd_script_path }}
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,26 @@
+---
+collections: []
+
+dependencies: []
+
+galaxy_info:
+  author: "Xenion1987"
+  company: "Access-InTech"
+  description: "Create a personalized message of the day"
+  license: "BSD, MIT"
+  min_ansible_version: "2.12"
+  namespace: "xenion1987"
+  role_name: "motd"
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: Rocky
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+  galaxy_tags:
+    - configuration
+    - system

@@ -1,0 +1,10 @@
+---
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#role-argument-validation
+argument_specs:
+  main:
+    author:
+      - Xenion1987
+    short_description: Create your 'message of the day'
+    description:
+      - This role creates a personalized message of the day.
+    options: {}

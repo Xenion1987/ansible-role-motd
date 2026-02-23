@@ -1,0 +1,32 @@
+---
+- name: FILE | Ensure target directory exists
+  ansible.builtin.file:
+    mode: "0755"
+    path: "{{ motd_script_dir }}"
+    recurse: true
+    state: directory
+- name: TEMPLATE | Render motd script file
+  ansible.builtin.template:
+    dest: "{{ motd_script_path }}"
+    mode: "0755"
+    src: motd.sh.j2
+
+- name: TEMPLATE | Render motd service file
+  notify:
+    - Run systemctl daemon-reload
+  ansible.builtin.template:
+    dest: "{{ motd_service_dir }}/{{ motd_service_name }}.service"
+    mode: "0755"
+    src: motd.service.j2
+- name: TEMPLATE | Render motd timer file
+  notify:
+    - Run systemctl daemon-reload
+    - Enable timer
+    - Start timer
+  ansible.builtin.template:
+    dest: "{{ motd_service_dir }}/{{ motd_service_name }}.timer"
+    mode: "0755"
+    src: motd.timer.j2
+
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers

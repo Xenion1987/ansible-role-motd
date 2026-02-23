@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+command_exists() {
+  local cmd=${1:?}
+  command -v "${cmd}" &>/dev/null
+}
+
+MOTD_TARGET_FILE="{{ motd_file_path }}"
+MOTD_CMD="{{ motd_command }}"
+
+command_exists "${MOTD_CMD}" || exit 1
+
+printf "\nWelcome %s@%s\n" "$(whoami)" "$(hostname -f)" >"${MOTD_TARGET_FILE}"
+{
+  printf "%s\n" "--------------------"
+  ${MOTD_CMD}
+  printf "%s\n\n" "--------------------"
+} >>"${MOTD_TARGET_FILE}"
